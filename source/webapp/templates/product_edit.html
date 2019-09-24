@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="pt-5 pb-2 text-center">Изменить товар</h1>
+    <form method="POST" action="{% url "edit_product" products.pk %}">
+        {% include 'partial/product_form.html' with button_text="Изменить" %}
+    </form>
+{% endblock %}

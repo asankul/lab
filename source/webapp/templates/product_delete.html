@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="pt-5 pb-5 text-center">Вы точно хотите удалить "{{ products.name }}"?</h1>
+    <form method="POST" action="{% url "delete_product" products.pk %}" class="text-center">
+        {% csrf_token %}
+        <p><input type="submit" class="btn btn-success" style="width:10%" value="Подтверить"></p>
+        <p><a class="btn btn-danger" href="{% url "index" %}">Не удалять</a></p>
+    </form>
+{% endblock %}

@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block menu %}
     <a class="navbar-brand" href="{% url 'index' %}">Главная</a>
+    <a class="navbar-brand" href="{% url 'add_product' %}">Добавить</a>
+    <form class="form-inline" action="{% url 'search' %}">
+        {% include 'partial/search.html' %}
+    </form>
 {% endblock %}
 {% block content %}
     <h1 class="mt-3">Добро пожаловать в наш магазин!</h1>
@@ -13,6 +17,10 @@
                             <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
                         </h2>
                         <p class="card-text">{{ product.get_category_display }}</p>
+                        <p class="float-left">
+                            <a href="{% url 'edit_product' product.pk %}" class="card-link"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'delete_product' product.pk %}" class="card-link"><i class="far fa-minus-square"></i></a>
+                        </p>
                         <p class="card-text text-right">{{ product.price }} сом</p>
                     </div>
                 </div>
